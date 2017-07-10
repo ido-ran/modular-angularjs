@@ -2,26 +2,23 @@ var angular = require('angular');
 
 var rootElement = document.getElementById('the-app');
 
-module.exports.initApp = function() {
+module.exports.initModule = function() {
 
 	rootElement.appendChild(document.createElement('my-dir'));
 
-	var app = angular.module('myApp', []);
+	var moduleA = angular.module('moduleA', []);
 	// app.controller('myCtrl', function($scope) {
 	//     $scope.firstName = "John";
 	//     $scope.lastName = "Doe";
 	// });
-	app.directive('myDir', function() {
+	moduleA.directive('myDir', function() {
 		return {
 			restrict: 'E',
 			replace: true,
-			template: '<div>this is the content of the directive wowowo</div>',
+			template: '<div>this is the content of moduleA</div>',
 			controllerAs: 'ctrl',
 			scope: true
 		};
 	});
-
-
-	angular.bootstrap(rootElement, ['myApp']);
 
 }

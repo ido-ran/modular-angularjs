@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["angular"], factory);
 	else if(typeof exports === 'object')
-		exports["App1"] = factory(require("angular"));
+		exports["ModuleB"] = factory(require("angular"));
 	else
-		root["App1"] = factory(root["angular"]);
+		root["ModuleB"] = factory(root["angular"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -81,27 +81,24 @@ var angular = __webpack_require__(1);
 
 var rootElement = document.getElementById('the-app');
 
-module.exports.initApp = function() {
+module.exports.initModule = function() {
 
-	rootElement.appendChild(document.createElement('my-dir'));
+	rootElement.appendChild(document.createElement('module-b-dir'));
 
-	var app = angular.module('myApp', []);
+	var moduleB = angular.module('moduleB', []);
 	// app.controller('myCtrl', function($scope) {
 	//     $scope.firstName = "John";
 	//     $scope.lastName = "Doe";
 	// });
-	app.directive('myDir', function() {
+	moduleB.directive('moduleBDir', function() {
 		return {
 			restrict: 'E',
 			replace: true,
-			template: '<div>this is the content of the directive wowowo</div>',
+			template: '<div>Module B is the best</div>',
 			controllerAs: 'ctrl',
 			scope: true
 		};
 	});
-
-
-	angular.bootstrap(rootElement, ['myApp']);
 
 }
 
